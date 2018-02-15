@@ -1,17 +1,14 @@
 import math
 
-
 def print_matrix( matrix ):
     s = ""
     for r in matrix:
         for c in r:
             if c / 10 == 0:
-                s += '  ' + str(c) + ' '
-            elif c / 10 <= 10:
-                s += ' ' + str(c) + ' '
-                
-            else:
-                s += str(c) + ' '
+                s += '  '
+            elif c / 10 < 10:
+                s += ' '
+            s += str(c) + ' '
         s += '\n'
     return s
 def ident( matrix ):
@@ -29,8 +26,6 @@ def matrix_mult( m1, m2 ):
         for cellc in range(len(ans[0])):
             for c in range(len(ans)):
                ans[cellr][cellc] += m1[cellr][c] * m2[c][cellc]
-    print "ans: \n"+ print_matrix(ans)
-  #  m2[:len(m2)-1] = list(ans)
     m2[:] = list(ans)
 
 def new_matrix(rows):

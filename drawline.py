@@ -63,7 +63,10 @@ def draw_line8( x0, y0, x1, y1, screen, color ):
 #all octaves
 def draw_line( x0, y0, x1, y1, screen, color):
     if (x0 == x1):
-        draw_line7(x0,y0,x1,y1,screen,color)
+        if y0 < y1:
+            draw_line2(x0,y0,x1,y1,screen,color)
+        else:
+            draw_line7(x0,y0,x1,y1,screen,color)
         return
     if (x1 < x0):
         a = x1
