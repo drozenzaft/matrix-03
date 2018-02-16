@@ -38,8 +38,34 @@ b = [[1,2],[3,4],[5,6]]
 print 'let m2 =\n' + print_matrix(b)
 matrix_mult(a,b)
 print 'this is m2 after matrix_mult(m1,m2):\n' + print_matrix(b)
+print "enjoy the checkerboard image, it's also on the gallery\n(albeit without a border for the white corners, but please excuse that)!\n"
 
-#now, for the actual image creation part of this
+#checkerboard creator
+def fill(x,y,side):
+    matrix = new_matrix(4,0)
+    i = 0
+    while y+i <= side:
+        add_edge(matrix,x,y+i,0,x+side,y+i,0)
+        i += 1
+    return matrix
+def checkerboard():
+    matrix = new_matrix(4,0)
+    for r in range(10):
+        for c in range(10):
+            i = 0
+            if (c+r)%2 == 1:
+                while i <= 50:
+                    add_edge(matrix,c*50,r*50+i,0,c*50+50,r*50+i,0)
+                    i += 1
+    draw_lines(matrix, screen, [255,255,255])
+    #adding border
+    matrix = new_matrix(4,0)
+    add_edge(matrix,0,0,0,0,500,0)
+    add_edge(matrix,0,0,0,500,0,0)
+    add_edge(matrix,0,500,0,500,500,0)
+    add_edge(matrix,500,0,0,500,500,0)
+    draw_lines(matrix, screen, [0,0,0])
 
-draw_lines( points, screen, color )
+checkerboard()
+
 display(screen)
